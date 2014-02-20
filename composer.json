@@ -1,0 +1,23 @@
+{
+    
+    "name": "pixi/factory",
+    
+    "description": "Factory class, needed to create API clients and DB access",
+    
+    "license": "MIT",
+    
+    "authors": [
+        {
+            "name": "Silvester Maraz",
+            "email": "smaraz@pixi.eu"
+        }
+    ],
+    
+    "minimum-stability": "dev",
+    
+    "autoload": {
+    	"psr-0": {
+        	"Pixi": "src/"
+		}
+	}    
+}
