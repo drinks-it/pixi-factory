@@ -74,7 +74,7 @@ class Environment
             return static::$customer;
         }
         
-        return static::$user = $_SESSION['userinfo']['pixi_db'];
+        return static::$customer = $_SESSION['userinfo']['pixi_db'];
     }
 }
 
