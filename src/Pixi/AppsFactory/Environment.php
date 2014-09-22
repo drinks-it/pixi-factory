@@ -27,6 +27,7 @@ class Environment
     public static $environment;
     public static $user;
     public static $customer;
+    public static $AppId;
 
 
     public static function getEnvironment()
@@ -75,6 +76,15 @@ class Environment
         }
         
         return static::$customer = $_SESSION['userinfo']['pixi_db'];
+    }
+    
+    public static function getAppId()
+    {
+        if (defined('APPID')) {
+            return static::$AppId = APPID;
+        } else {
+            return static::$AppId = 'Not defined';
+        }
     }
 }
 
