@@ -27,7 +27,7 @@ class Environment
     public static $environment;
     public static $user;
     public static $customer;
-    public static $AppId;
+    public static $appId;
 
 
     public static function getEnvironment()
@@ -81,9 +81,9 @@ class Environment
     public static function getAppId()
     {
         if (defined('APPID')) {
-            return static::$AppId = APPID;
+            return static::$appId = APPID;
         } else {
-            return static::$AppId = 'Not defined';
+            return static::$appId = 'Not defined';
         }
     }
 }
