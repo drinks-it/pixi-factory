@@ -83,7 +83,7 @@ class Environment
         if (defined('APPID')) {
             return static::$appId = APPID;
         } else {
-            return static::$appId = 'Not defined';
+            return NULL;
         }
     }
 }
