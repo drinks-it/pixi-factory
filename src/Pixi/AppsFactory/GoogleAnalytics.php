@@ -17,6 +17,13 @@ class GoogleAnalytics
      */
     public static function getCode(){
 
+        if(!$_SERVER['SERVER_NAME'] === 'localhost'){
+            $id = Environment::getAppId();
+        }else{
+            $id = 'localApp';
+        }
+
+
         return "<script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
                 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -25,7 +32,7 @@ class GoogleAnalytics
 
             ga('create', 'UA-54919261-1', 'auto');
             ga('send', 'pageview');
-            ga('set', 'dimension1', '". strtolower(substr($_SERVER['REQUEST_URI'], 1, strpos($_SERVER['REQUEST_URI'], '/', 1) - 1)) ."');
+            ga('set', 'dimension1', '". strtolower($id)."');
             ga('set', 'dimension2', '". Environment::getCustomer() ."');
             ga('set', 'dimension3', '". Environment::getEnvironment() ."');
             ga('set', 'dimension4', '". Environment::getUser()."');
