@@ -36,6 +36,7 @@ class GoogleAnalytics
             ga('set', 'dimension2', '". Environment::getCustomer() ."');
             ga('set', 'dimension3', '". Environment::getEnvironment() ."');
             ga('set', 'dimension4', '". Environment::getUser()."');
+            ga('set', 'metric1', 1);
 
         </script>";
     }
