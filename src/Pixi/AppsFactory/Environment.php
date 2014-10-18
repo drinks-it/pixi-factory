@@ -38,9 +38,9 @@ class Environment
         
         if ($_SERVER['HTTP_HOST'] == 'localhost' || $_SERVER['HTTP_HOST'] == '127.0.0.1') {
             static::$environment = static::ENV_LOCAL;
-        } elseif ($_SERVER['HTTP_HOST'] == 'apps-stage.pixi.eu' || stropos($_SERVER['HTTP_HOST'], 'app-stage')) {
+        } elseif ($_SERVER['HTTP_HOST'] == 'apps-stage.pixi.eu' || strpos($_SERVER['HTTP_HOST'], 'app-stage')) {
             static::$environment = static::ENV_STAGE;
-        } elseif ($_SERVER['HTTP_HOST'] == 'apps-live.pixi.eu' || stropos($_SERVER['HTTP_HOST'], 'app-deploy')) {
+        } elseif ($_SERVER['HTTP_HOST'] == 'apps-live.pixi.eu' || strpos($_SERVER['HTTP_HOST'], 'app-deploy')) {
             static::$environment = static::ENV_LIVE;
         } else {
             static::$environment = self::ENV_UNKNOWN;
