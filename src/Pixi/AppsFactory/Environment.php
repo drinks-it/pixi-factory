@@ -19,9 +19,9 @@ class Environment
     const ENV_STAGE = 2;
     const ENV_LIVE = 3;
     const ENV_UNKNOWN = 4;
-    
+
     const LOCALUSER = 'LocalUser';
-    const CRONUSEER = 'CronUser';
+    const CRONUSER = 'CronUser';
     const APPACCESSUSER = 'AppAccessUser';
 
     public static $environment;
@@ -35,7 +35,7 @@ class Environment
         if (isset(static::$environment)) {
             return static::$environment;
         }
-        
+
         if ($_SERVER['HTTP_HOST'] == 'localhost' || $_SERVER['HTTP_HOST'] == '127.0.0.1') {
             static::$environment = static::ENV_LOCAL;
         } elseif ($_SERVER['HTTP_HOST'] == 'apps-stage.pixi.eu' || strpos($_SERVER['HTTP_HOST'], 'app-stage')) {
@@ -45,21 +45,21 @@ class Environment
         } else {
             static::$environment = self::ENV_UNKNOWN;
         }
-        
+
         return static::$environment;
     }
-    
+
     public static function getUser()
     {
         if (isset(static::$user)) {
             return static::$user;
         }
 
-        if (isset($_SESSION['userinfo']['pixi_username']) && $_SESSION['userinfo']['pixi_username'] == 'appaccess') {
+        if (isset($_SESSION['userinfo']['pixi_username']) && $_SESSION['userinfo']['pixi_username'] == static::APPACCESSUSER) {
             static::$user = static::APPACCESSUSER;
             static::$user = $_SESSION['userinfo']['pixi_username'];
-        } elseif (isset($_SESSION['userinfo']['pixi_username']) && $_SESSION['userinfo']['pixi_username'] == 'cronaccess') {
-            static::$user = static::CRONUSEER;
+        } elseif (isset($_SESSION['userinfo']['pixi_username']) && $_SESSION['userinfo']['pixi_username'] == static::CRONUSER) {
+            static::$user = static::CRONUSER;
         } elseif (isset($_SESSION['userinfo']['pixi_username'])) {
             static::$user = $_SESSION['userinfo']['pixi_username'];
         } else {
@@ -68,16 +68,16 @@ class Environment
 
         return static::$user;
     }
-    
+
     public static function getCustomer()
     {
         if (isset(static::$customer)) {
             return static::$customer;
         }
-        
+
         return static::$customer = $_SESSION['userinfo']['pixi_db'];
     }
-    
+
     public static function getAppId()
     {
         if (defined('APPID')) {
@@ -87,4 +87,3 @@ class Environment
         }
     }
 }
-
