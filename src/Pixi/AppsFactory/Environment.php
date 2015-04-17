@@ -23,6 +23,7 @@ class Environment
     const LOCALUSER = 'LocalUser';
     const CRONUSER = 'CronUser';
     const APPACCESSUSER = 'AppAccessUser';
+    const MASTERUSER = 'master';
 
     public static $environment;
     public static $user;
