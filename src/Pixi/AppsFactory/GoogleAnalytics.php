@@ -17,7 +17,7 @@ class GoogleAnalytics
      */
     public static function getCode(){
 
-        if(!$_SERVER['SERVER_NAME'] === 'localhost'){
+        if($_SERVER['SERVER_NAME'] != 'localhost'){
             $id = Environment::getAppId();
         }else{
             $id = 'localApp';
@@ -31,11 +31,11 @@ class GoogleAnalytics
             })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
             ga('create', 'UA-54919261-1', 'auto');
-            ga('send', 'pageview');
             ga('set', 'dimension1', '". strtolower($id)."');
             ga('set', 'dimension2', '". Environment::getCustomer() ."');
             ga('set', 'dimension3', '". Environment::getEnvironment() ."');
             ga('set', 'dimension4', '". Environment::getCustomer()."#". Environment::getUser() ."');
+            ga('send', 'pageview');
 
         </script>";
     }
