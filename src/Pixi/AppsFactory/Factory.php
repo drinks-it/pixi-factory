@@ -49,5 +49,4 @@ class Factory
         Factory::$options[$key] = $options;
         
     }
-    
 }
