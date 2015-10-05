@@ -37,13 +37,23 @@ class Environment
             return static::$environment;
         }
 
-        if ($_SERVER['HTTP_HOST'] == 'localhost' || $_SERVER['HTTP_HOST'] == '127.0.0.1') {
+        if (isset($_SERVER['HTTP_HOST'])
+            && ($_SERVER['HTTP_HOST'] == 'localhost' || $_SERVER['HTTP_HOST'] == '127.0.0.1')) {
+
             static::$environment = static::ENV_LOCAL;
-        } elseif ($_SERVER['HTTP_HOST'] == 'apps-stage.pixi.eu' || strpos($_SERVER['HTTP_HOST'], 'app-stage')) {
+            
+        } elseif (isset($_SERVER['HTTP_HOST'])
+            && ($_SERVER['HTTP_HOST'] == 'apps-stage.pixi.eu' || strpos($_SERVER['HTTP_HOST'], 'app-stage'))) {
+
             static::$environment = static::ENV_STAGE;
-        } elseif ($_SERVER['HTTP_HOST'] == 'apps-live.pixi.eu' || strpos($_SERVER['HTTP_HOST'], 'app-deploy')) {
+
+        } elseif (isset($_SERVER['HTTP_HOST'])
+            && ($_SERVER['HTTP_HOST'] == 'apps-live.pixi.eu' || strpos($_SERVER['HTTP_HOST'], 'app-deploy'))) {
+
             static::$environment = static::ENV_LIVE;
+
         } else {
+
             static::$environment = self::ENV_UNKNOWN;
         }
 
@@ -56,14 +66,23 @@ class Environment
             return static::$user;
         }
 
-        if (isset($_SESSION['userinfo']['pixi_username']) && $_SESSION['userinfo']['pixi_username'] == static::APPACCESSUSER) {
+        if (isset($_SESSION['userinfo']['pixi_username'])
+            && $_SESSION['userinfo']['pixi_username'] == static::APPACCESSUSER) {
+
             static::$user = static::APPACCESSUSER;
             static::$user = $_SESSION['userinfo']['pixi_username'];
-        } elseif (isset($_SESSION['userinfo']['pixi_username']) && $_SESSION['userinfo']['pixi_username'] == static::CRONUSER) {
+
+        } elseif (isset($_SESSION['userinfo']['pixi_username'])
+            && $_SESSION['userinfo']['pixi_username'] == static::CRONUSER) {
+
             static::$user = static::CRONUSER;
+
         } elseif (isset($_SESSION['userinfo']['pixi_username'])) {
+
             static::$user = $_SESSION['userinfo']['pixi_username'];
+
         } else {
+
             static::$user = static::LOCALUSER;
         }
 
