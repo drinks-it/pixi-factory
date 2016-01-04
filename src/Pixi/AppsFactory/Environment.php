@@ -38,10 +38,10 @@ class Environment
         }
 
         if (isset($_SERVER['HTTP_HOST'])
-            && ($_SERVER['HTTP_HOST'] == 'localhost' || $_SERVER['HTTP_HOST'] == '127.0.0.1')) {
+            && ($_SERVER['HTTP_HOST'] == 'localhost' || $_SERVER['HTTP_HOST'] == 'pixi.lan' || $_SERVER['HTTP_HOST'] == '127.0.0.1')) {
 
             static::$environment = static::ENV_LOCAL;
-            
+
         } elseif (isset($_SERVER['HTTP_HOST'])
             && ($_SERVER['HTTP_HOST'] == 'apps-stage.pixi.eu' || strpos($_SERVER['HTTP_HOST'], 'app-stage') !== false)) {
 
