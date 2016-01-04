@@ -43,12 +43,12 @@ class Environment
             static::$environment = static::ENV_LOCAL;
 
         } elseif (isset($_SERVER['HTTP_HOST'])
-            && ($_SERVER['HTTP_HOST'] == 'apps-stage.pixi.eu' || strpos($_SERVER['HTTP_HOST'], 'app-stage'))) {
+            && ($_SERVER['HTTP_HOST'] == 'apps-stage.pixi.eu' || strpos($_SERVER['HTTP_HOST'], 'app-stage') !== false)) {
 
             static::$environment = static::ENV_STAGE;
 
         } elseif (isset($_SERVER['HTTP_HOST'])
-            && ($_SERVER['HTTP_HOST'] == 'apps-live.pixi.eu' || strpos($_SERVER['HTTP_HOST'], 'app-deploy'))) {
+            && ($_SERVER['HTTP_HOST'] == 'apps-live.pixi.eu' || strpos($_SERVER['HTTP_HOST'], 'app-deploy') !== false)) {
 
             static::$environment = static::ENV_LIVE;
 
